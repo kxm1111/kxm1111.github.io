@@ -1,0 +1,15 @@
+body{
+    background: pink;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    font-size: 51px;
+}
+
+
+
+
