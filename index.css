@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: pink;
+}
+
+h1 {
+    
+    text-align: center;
+    color: black;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    font-size: 51px;
+}
+
+.Project{
+    height: 600px;
+    width: 1000px;
+    line-height: 400px;
+    margin: 40px auto;
+    border: 5px solid black;
+    border-radius: 21px;
+
+}
