@@ -1,29 +1,40 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: pink;
+    background-color: white;
 }
 
-h1 {
-    
+a {
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
+.header .Project a h1:hover {
+    color: red;
+}
+
+.header {
+    background-color: pink;
+    height: 800px;
+    width: 300px;
+    margin: 0px auto;
+    padding: 11px 11px;
+}
+
+h1{
     text-align: center;
     color: black;
 }
 
-a{
-    text-decoration: none;
-}
-
-a:hover{
-    font-size: 51px;
-}
-
 .Project{
-    height: 600px;
-    width: 1000px;
-    line-height: 400px;
-    margin: 40px auto;
-    border: 5px solid black;
-    border-radius: 21px;
+    border-top: 2px solid black;
+}
 
+
+
+.header .MyProjectUrl{
+    border: 2px solid black;
+    margin-top: 21px;
+    border-radius: 21px;
 }
