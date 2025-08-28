@@ -17,12 +17,12 @@ a {
 .header {
     background-color: pink;
     height: 800px;
-    width: 300px;
+    width: 330px;
     margin: 0px auto;
     padding: 11px 11px;
 }
 
-h1{
+h1,h2{
     text-align: center;
     color: black;
 }
