@@ -32,9 +32,9 @@ h1,h2{
 }
 
 
-
-.header .MyProjectUrl{
+.header .MyProjectUrl, .header .MyProject {
     border: 2px solid black;
     margin-top: 21px;
     border-radius: 21px;
 }
+
