@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌸 小安同学的个人网页 🌸</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #ffd6e8 0%, #ffeef6 50%, #f8d0e5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* 飘落花瓣动画 */
+        .petal {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background: rgba(255, 182, 206, 0.7);
+            border-radius: 50% 0 50% 0;
+            animation: fall linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.75);
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(255, 150, 190, 0.2);
+            max-width: 420px;
+            width: 90%;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 圆形头像 */
+        .avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff9ec4, #ffb3d6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 20px rgba(255, 140, 180, 0.4);
+            border: 4px solid rgba(255, 255, 255, 0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.08);
+        }
+
+        .avatar-text {
+            font-size: 36px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 2px 8px rgba(255, 100, 150, 0.3);
+            letter-spacing: 4px;
+        }
+
+        /* 名字 */
+        .name {
+            font-size: 26px;
+            font-weight: bold;
+            color: #e8548a;
+            margin-bottom: 6px;
+            text-shadow: 0 1px 3px rgba(255, 182, 206, 0.5);
+        }
+
+        /* 签名 */
+        .bio {
+            font-size: 14px;
+            color: #c95d85;
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        /* 个人介绍板块 */
+        .intro {
+            background: linear-gradient(135deg, rgba(255, 182, 206, 0.2), rgba(255, 210, 230, 0.3));
+            border-radius: 20px;
+            padding: 20px 18px;
+            margin-bottom: 18px;
+            text-align: left;
+            border: 1.5px solid rgba(255, 182, 206, 0.4);
+            animation: fadeIn 1s ease 0.2s both;
+        }
+
+        .intro-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #e8548a;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+
+        .intro-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            font-size: 13.5px;
+            color: #b84676;
+            line-height: 1.7;
+        }
+
+        .intro-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro-icon {
+            margin-right: 8px;
+            flex-shrink: 0;
+            font-size: 15px;
+        }
+
+        .intro-label {
+            font-weight: 600;
+            color: #d63e72;
+            margin-right: 4px;
+        }
+
+        /* ===== 技能板块 ===== */
+        .skills {
+            background: linear-gradient(135deg, rgba(255, 182, 206, 0.15), rgba(255, 210, 230, 0.25));
+            border-radius: 20px;
+            padding: 18px 18px;
+            margin-bottom: 26px;
+            text-align: left;
+            border: 1.5px solid rgba(255, 182, 206, 0.35);
+            animation: fadeIn 1s ease 0.35s both;
+        }
+
+        .skills-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: #e8548a;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+
+        .skill-item {
+            margin-bottom: 12px;
+        }
+
+        .skill-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .skill-name {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #d63e72;
+        }
+
+        .skill-percent {
+            font-size: 12px;
+            color: #c95d85;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 182, 206, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 1.5s ease;
+            animation: fillBar 1.5s ease 0.6s both;
+        }
+
+        .skill-fill.python {
+            width: 85%;
+            background: linear-gradient(90deg, #ff9ec4, #ffb3d6);
+        }
+
+        .skill-fill.java {
+            width: 70%;
+            background: linear-gradient(90deg, #ff8ab8, #ffc4e0);
+        }
+
+        @keyframes fillBar {
+            from {
+                width: 0;
+            }
+        }
+
+        /* 底部 */
+        .footer {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #d88aaa;
+        }
+
+        /* 装饰爱心 */
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: float 3s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        .heart:nth-child(1) {
+            top: -15px;
+            left: 20px;
+            animation-delay: 0s;
+        }
+
+        .heart:nth-child(2) {
+            top: 10px;
+            right: 15px;
+            animation-delay: 1s;
+            font-size: 16px;
+        }
+
+        .heart:nth-child(3) {
+            bottom: 60px;
+            left: 10px;
+            animation-delay: 2s;
+            font-size: 14px;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 飘落花瓣 -->
+    <script>
+        for (let i = 0; i < 12; i++) {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            petal.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(petal);
+        }
+    </script>
+
+    <div class="container">
+        <!-- 装饰爱心 -->
+        <span class="heart">💕</span>
+        <span class="heart">🌸</span>
+        <span class="heart">✨</span>
+
+        <!-- 圆形头像 -->
+        <div class="avatar">
+            <span class="avatar-text">暗恋</span>
+        </div>
+
+        <!-- 名字 -->
+        <div class="name">卫民安</div>
+
+        <!-- 个性签名 -->
+        <div class="bio">
+            每天暗恋美女
+        </div>
+
+        <!-- 个人介绍 -->
+        <div class="intro">
+            <div class="intro-title">🌷 关于我</div>
+            <div class="intro-item">
+                <span class="intro-icon">🎀</span>
+                <span>
+                    <span class="intro-label">昵称：</span>
+                    小安同学
+                </span>
+            </div>
+            <div class="intro-item">
+                <span class="intro-icon">🌸</span>
+                <span>
+                    <span class="intro-label">星座：</span>
+                    天秤座
+                </span>
+            </div>
+            <div class="intro-item">
+                <span class="intro-icon">📍</span>
+                <span>
+                    <span class="intro-label">坐标：</span>
+                    东莞
+                </span>
+            </div>
+            <div class="intro-item">
+                <span class="intro-icon">💖</span>
+                <span>
+                    <span class="intro-label">喜欢：</span>
+                    美女、小美女
+                </span>
+            </div>
+            <div class="intro-item">
+                <span class="intro-icon">✍️</span>
+                <span>
+                    <span class="intro-label">性格：</span>
+                    内向
+                </span>
+            </div>
+            <div class="intro-item">
+                <span class="intro-icon">🎵</span>
+                <span>
+                    <span class="intro-label">最近循环：</span>
+                    《珊瑚海》
+                </span>
+            </div>
+        </div>
+
+        <!-- ===== 技能 ===== -->
+        <div class="skills">
+            <div class="skills-title">💻 我的技能</div>
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span class="skill-name">🐍 Python</span>
+                    <span class="skill-percent">80%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill python"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-header">
+                    <span class="skill-name">☕ Java</span>
+                    <span class="skill-percent">70%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-fill java"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部 -->
+        <div class="footer">
+            © 2026 暗恋美女 ✿
+        </div>
+    </div>
+</body>
+
+</html>
