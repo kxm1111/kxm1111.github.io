@@ -73,19 +73,19 @@
     // 所有用户信息
     console.log('用户信息：', user);
     // 定时器
-    setInterval(() => {
-        // 链接
-        // const url = 'https://chat.baidu.com/aichat/longtask/list';
-        // 
-        const url = 'https://www.baidu.com/';
-        fetch(url)
-            // 解析 JSON 数据
-            // .then(response => console.log(response.json()))
-            // 
-            .then(response => console.log('text：', response.text))
-            // 处理数据
-            .then(data => console.log('data：', data))
-            // 错误处理
-            .catch(error => console.error('Error:', error));
-    }, 11);
+    // setInterval(() => {
+    // 链接
+    // const url = 'https://chat.baidu.com/aichat/longtask/list';
+    // 
+    //     const url = 'https://www.baidu.com/';
+    //     fetch(url)
+    //         // 解析 JSON 数据
+    //         // .then(response => console.log(response.json()))
+    //         // 
+    //         .then(response => console.log('text：', response.text()))
+    //         // 处理数据
+    //         .then(data => console.log('data：', data))
+    //         // 错误处理
+    //         .catch(error => console.error('Error:', error));
+    // }, 11);
 })();
